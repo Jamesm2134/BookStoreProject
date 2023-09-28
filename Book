@@ -1,0 +1,85 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package mckennajamesproject1;
+
+/**
+ *
+ * @author jamck
+ */
+
+import java.util.*;
+public class Book {
+    private String title;
+    private int quantity;
+    private String type;
+    private int theAlchemist;
+    private int silentPatient;
+    private int mazeRunner;
+    
+    // Getter for theAlchemist
+    public int getTheAlchemist() {
+        return theAlchemist;
+    }
+
+    // Setter for theAlchemist
+    public void setTheAlchemist(int theAlchemist) {
+        this.theAlchemist = theAlchemist;
+    }
+
+    // Getter for silentPatient
+    public int getSilentPatient() {
+        return silentPatient;
+    }
+
+    // Setter for silentPatient
+    public void setSilentPatient(int silentPatient) {
+        this.silentPatient = silentPatient;
+    }
+
+    // Getter for mazeRunner
+    public int getMazeRunner() {
+        return mazeRunner;
+    }
+
+    // Setter for mazeRunner
+    public void setMazeRunner(int mazeRunner) {
+        this.mazeRunner = mazeRunner;
+    }
+
+    // Getter and Setter for title
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    // Getter and Setter for quantity
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
+    public Book(String title, int quantity, String type) {
+        this.title = title;
+        this.quantity = quantity;
+        this.type = type;
+    }
+    
+    
+    
+}
