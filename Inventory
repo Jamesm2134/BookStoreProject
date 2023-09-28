@@ -1,0 +1,45 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package mckennajamesproject1;
+
+/**
+ *
+ * @author jamck
+ */
+
+import java.util.*;
+
+public class Inventory {
+    public ArrayList<Book> books = new ArrayList<>();
+    public ArrayList<CD> CDs = new ArrayList<>();
+    public ArrayList<DVD> DVDs = new ArrayList<>();
+
+    public Inventory() {
+        Book theAlchemist = new Book("The Alchemist", 10, "(Book)");
+        Book silentPatient = new Book("The Silent Patient", 8,"(Book)");
+        Book mazeRunner = new Book("The Maze Runner", 7,"(Book)");
+
+        books.add(theAlchemist);
+        books.add(silentPatient);
+        books.add(mazeRunner);
+        
+        CD wholeLottaRed = new CD("Whole Lotta Red by Playboi Carti", 5);
+        CD smithereens = new CD("SMITHEREENS by Joji", 6);
+        CD aloneATProm = new CD("Alone at Prom by Tory Lanez", 2);
+        
+        CDs.add(wholeLottaRed);
+        CDs.add(smithereens);
+        CDs.add(aloneATProm);
+        
+        DVD onePiece250 = new DVD("One Piece Episodes 1-250",3);
+        DVD onePiece500 = new DVD("One Piece Episodes 250-500", 7);
+        DVD onePiece750 = new DVD("One Piece Episodes 500-750", 10);
+
+        DVDs.add(onePiece250);
+        DVDs.add(onePiece500);
+        DVDs.add(onePiece750);
+    }
+    
+}
