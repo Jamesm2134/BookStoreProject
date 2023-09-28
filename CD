@@ -1,0 +1,72 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package mckennajamesproject1;
+
+/**
+ *
+ * @author jamck
+ */
+public class CD {
+    private String title;
+    private int quantity;
+    private int wholeLottaRed;
+    private int smithereens;
+    private int aloneATProm;
+    
+    public String getTitle() {
+        return title;
+    }
+
+    // Setter for title
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    // Getter for quantity
+    public int getQuantity() {
+        return quantity;
+    }
+
+    // Setter for quantity
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    // Getter for wholeLottaRed
+    public int getWholeLottaRed() {
+        return wholeLottaRed;
+    }
+
+    // Setter for wholeLottaRed
+    public void setWholeLottaRed(int wholeLottaRed) {
+        this.wholeLottaRed = wholeLottaRed;
+    }
+
+    // Getter for smithereens
+    public int getSmithereens() {
+        return smithereens;
+    }
+
+    // Setter for smithereens
+    public void setSmithereens(int smithereens) {
+        this.smithereens = smithereens;
+    }
+
+    // Getter for aloneATProm
+    public int getAloneATProm() {
+        return aloneATProm;
+    }
+
+    // Setter for aloneATProm
+    public void setAloneATProm(int aloneATProm) {
+        this.aloneATProm = aloneATProm;
+    }
+    public CD(String title, int quantity) {
+        this.title = title;
+        this.quantity = quantity;
+    }
+
+    
+}
