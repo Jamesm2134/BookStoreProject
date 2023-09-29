@@ -9,6 +9,16 @@ package mckennajamesproject1;
  * @author jamck
  */
 
+////////////////////////////////////////////////////////////////////////
+/*
+
+The book class creates the books seen inthe inventory. It creates the title,
+quantity, price and type for each book. All the behind the scenes work for books
+happens here.
+
+*/
+////////////////////////////////////////////////////////////////////////
+
 import java.util.*;
 public class Book {
     private int number;
@@ -16,13 +26,13 @@ public class Book {
     private int quantity;
     private String type;
     private double price;
-   
     private boolean outOfStock;
+    
+    // getters and setters
     
     public boolean isOutOfStock() {
         return outOfStock;
     }
-
     public void setOutOfStock(boolean outOfStock) {
         this.outOfStock = outOfStock;
     }
@@ -32,42 +42,32 @@ public class Book {
     public void setNumber(int number){
         this.number = number;
     }
-    
-    // Getter and Setter for title
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
-    
     public String getType() {
         return type;
     }
-
     public void setType(String type) {
         this.type = type;
     }
-
-    // Getter and Setter for quantity
     public int getQuantity() {
         return quantity;
     }
-
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    // Getter for price
     public double getPrice() {
         return price;
     }
-
-    // Setter for price
     public void setPrice(double price) {
         this.price = price;
     }
     
+    // constructor for the book class the carries all the book information 
     public Book(int number, String title, int quantity,double price, String type) {
         this.number = number;
         this.title = title;
