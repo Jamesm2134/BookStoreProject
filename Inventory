@@ -15,31 +15,50 @@ public class Inventory {
     public ArrayList<Book> books = new ArrayList<>();
     public ArrayList<CD> CDs = new ArrayList<>();
     public ArrayList<DVD> DVDs = new ArrayList<>();
+    private int numItems = 0;
 
     public Inventory() {
-        Book theAlchemist = new Book("The Alchemist", 10, "(Book)");
-        Book silentPatient = new Book("The Silent Patient", 8,"(Book)");
-        Book mazeRunner = new Book("The Maze Runner", 7,"(Book)");
+        Book theAlchemist = new Book(1,"The Alchemist", 10, 15.00,"(Book)");
+        Book silentPatient = new Book(2,"The Silent Patient", 8,6.00,"(Book)");
+        Book mazeRunner = new Book(3,"The Maze Runner", 2,10.00,"(Book)");
 
         books.add(theAlchemist);
         books.add(silentPatient);
         books.add(mazeRunner);
         
-        CD wholeLottaRed = new CD("Whole Lotta Red by Playboi Carti", 5);
-        CD smithereens = new CD("SMITHEREENS by Joji", 6);
-        CD aloneATProm = new CD("Alone at Prom by Tory Lanez", 2);
+        CD wholeLottaRed = new CD(4,"Whole Lotta Red by Playboi Carti", 5,24.99, "(CD)");
+        CD smithereens = new CD(5,"SMITHEREENS by Joji", 6,15.00,"(CD)");
+        CD aloneATProm = new CD(6,"Alone at Prom by Tory Lanez", 2,10.00,"(CD)");
         
         CDs.add(wholeLottaRed);
         CDs.add(smithereens);
         CDs.add(aloneATProm);
         
-        DVD onePiece250 = new DVD("One Piece Episodes 1-250",3);
-        DVD onePiece500 = new DVD("One Piece Episodes 250-500", 7);
-        DVD onePiece750 = new DVD("One Piece Episodes 500-750", 10);
+        DVD onePiece250 = new DVD(7,"One Piece Episodes 1-250",3,5.99,"(DVD)");
+        DVD onePiece500 = new DVD(8,"One Piece Episodes 250-500",7,5.99,"(DVD)");
 
         DVDs.add(onePiece250);
         DVDs.add(onePiece500);
-        DVDs.add(onePiece750);
     }
+   
+    // return the number of items that can be bought
+    public int inventorySize(){
+        int bookSize = books.size();
+        int CDSize = CDs.size();
+        int DVDSize = DVDs.size();
+        
+        return bookSize + CDSize + DVDSize;
+    }
+    
+    public int getNumItems() {
+        return numItems;
+    }
+
+    // Setter for numItems
+    public void setNumItems(int numItems) {
+        this.numItems = numItems;
+    }
+    
+    
     
 }
