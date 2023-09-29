@@ -9,14 +9,26 @@ package mckennajamesproject1;
  * @author jamck
  */
 
+////////////////////////////////////////////////////////////////////////
+/*
+
+Inventory is a very important class. It creates the arrayList for the books, cds,
+and dvds. It creates the values for each book, cd, and dvd. This class is very important.
+
+*/
+////////////////////////////////////////////////////////////////////////
+
 import java.util.*;
 
 public class Inventory {
     public ArrayList<Book> books = new ArrayList<>();
     public ArrayList<CD> CDs = new ArrayList<>();
     public ArrayList<DVD> DVDs = new ArrayList<>();
+    public ArrayList<Membership> names = new ArrayList<>();
     private int numItems = 0;
+    private double totalMoneySpent;
 
+    // Contructor for inventory, does a lot of work for the main part of the code.
     public Inventory() {
         Book theAlchemist = new Book(1,"The Alchemist", 10, 15.00,"(Book)");
         Book silentPatient = new Book(2,"The Silent Patient", 8,6.00,"(Book)");
@@ -39,6 +51,12 @@ public class Inventory {
 
         DVDs.add(onePiece250);
         DVDs.add(onePiece500);
+        
+        Membership Name1 = new Membership("James", "Credit", true,0.0, "14 days");
+        Membership Name2 = new Membership("Ryan", "Debit", true,0.0,"3 days");
+
+        names.add(Name1);
+        names.add(Name2);
     }
    
     // return the number of items that can be bought
@@ -59,6 +77,13 @@ public class Inventory {
         this.numItems = numItems;
     }
     
-    
-    
+    public double getTotalMoneySpent() {
+        return totalMoneySpent;
+    }
+
+    // Setter method to set the value of 'name'
+    public void setTotalMoneySpent(double totalMoneySpent) {
+        this.totalMoneySpent = totalMoneySpent;
+    }
+
 }
