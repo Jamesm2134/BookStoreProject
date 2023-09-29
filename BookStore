@@ -10,58 +10,204 @@ package mckennajamesproject1;
  */
 import java.util.Scanner;
 
-
 public class BookStore {
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
+        // creating a new instance of the inventory class so I can referece it here
+        Inventory inventory = new Inventory();
         System.out.println("WELCOME TO MY BOOK STORE");
         System.out.println("***************************************************");
-        
-        
+
+        //import scanner
         Scanner scan = new Scanner(System.in);
         boolean leaveStore = false;
-        
-        
-        while(leaveStore==false){
-            
+        double totalMoney = 0.0;
+        //while took to keep the program running while the user is in the store
+        while (leaveStore == false) {
+
             System.out.println("Select From One Of The Following Options");
             System.out.println("\t 1. Make A Purchase");
             System.out.println("\t 2. MemberShip Status");
             System.out.println("\t 3. Inventory");
             System.out.println("\t 4. Exit");
-            
-            int userNum = scan.nextInt();
-            Inventory inventory = new Inventory();
-            
-            
-            
-            switch(userNum){
-                case 1:
-                     System.out.println("Inventory:");
-                        for (Book book : inventory.books) {
-                            System.out.println(book.getTitle() + ": " + book.getQuantity() + ": " + book.getType() + "    ");
-                        }
-                        for (CD cd : inventory.CDs) {
-                            System.out.println(cd.getTitle() + ": " + cd.getQuantity() + "  ||  ");
-                        }
-                        for (DVD dvd : inventory.DVDs) {
-                            System.out.println(dvd.getTitle() + ": " + dvd.getQuantity() + "  ||  ");
-                        }
-                        int orderBook = scan.nextInt();
-                        
-                        break;
-                case 2:   
-                     System.out.println("Are you a member (Y or N");
-                case 3:
-                    System.out.println("Today, Our inventory looks like this");
-                case 4: 
-                    System.exit(0);
-                default:
-                    System.out.println("Sorry, but you need to enter a 1, 2, 3, 4, 5, or a 6");
-                }
 
-                }
-        
-        
-    }
+            int userNum = scan.nextInt();
+            // Condition for when the user enters a number that is not available
+            while (userNum != 0 && (userNum < 1 || userNum > 4)) {
+                System.out.println("Please enter a valid number between 1 and 4.");
+                System.out.print("Enter the line number to order (1 - 4) or 0 to exit: ");
+                userNum = scan.nextInt();
+            }
+
+            // total size of the inventory
+            int totalSize = inventory.inventorySize();
+            //switch case condition for user input
+
+            switch (userNum) {
+                case 1:
+                    System.out.println("Select from the following of what you want to buy: ");
+                    for (Book book : inventory.books) {
+                        System.out.println(book.getNumber() + ". " + book.getTitle() + ": " + book.getQuantity() + " in stock" + " -- " + "$" + book.getPrice() + book.getType());
+                    }
+
+                    for (CD cd : inventory.CDs) {
+                        System.out.println(cd.getNumber() + ". " + cd.getTitle() + ": " + cd.getQuantity() + " in stock" + " -- " + "$" + cd.getPrice() + cd.getType());
+                    }
+
+                    for (DVD dvd : inventory.DVDs) {
+                        System.out.println(dvd.getNumber() + ". " + dvd.getTitle() + ": " + dvd.getQuantity() + " in stock" + " -- " + dvd.getPrice() + dvd.getType());
+                    }
+
+                    int orderBook = scan.nextInt();
+                    while (orderBook != 0 && (orderBook < 1 || orderBook > totalSize)) {
+                        System.out.println("Please enter a valid number between 1 and " + totalSize + ".");
+                        System.out.print("Enter the line number to order (1-" + totalSize + ") or 0 to exit: ");
+                        orderBook = scan.nextInt();
+                    }
+
+                    int selectedBookType = 0; // You can define constants for CD and DVD types
+
+                    if (orderBook >= 1 && orderBook <= 3) {
+                        selectedBookType = 1; // Book type
+                    } else if (orderBook >= 4 && orderBook <= 6) {
+                        selectedBookType = 2; // CD type
+                    } else if (orderBook >= 7 && orderBook <= 8) {
+                        selectedBookType = 3; // DVD type
+                    }
+
+                    switch (selectedBookType) {
+                        case 1: // Book
+                            for (Book book : inventory.books) {
+                                if (book.getNumber() == orderBook && book.getQuantity() > 0){
+                                    System.out.println(book.getQuantity() + " helllooo");
+                                    inventory.setNumItems(inventory.getNumItems() + 1);
+                                    System.out.println("Before update - Quantity: " + book.getQuantity()); // Debugging
+                                    totalMoney = totalMoney + book.getPrice();
+                                    System.out.println("Total Money: " + totalMoney); // Debugging
+                                    int newQuan = book.getQuantity();
+                                    newQuan = (book.getQuantity() - 1);
+                                    book.setQuantity(newQuan);
+                                    System.out.println("After update - Quantity: " + book.getQuantity()); // Debugging
+                                    break;
+                                }else{
+                                    System.out.println("OUT OF STOCK");
+                                }
+                            }
+                            break;
+
+                        case 2: // CD
+                            for (CD cd : inventory.CDs) {
+                                if (cd.getNumber() == orderBook) {
+                                    inventory.setNumItems(inventory.getNumItems() + 1);
+                                    System.out.println("Before update - Quantity: " + cd.getQuantity()); // Debugging
+                                    totalMoney = totalMoney + cd.getPrice();
+                                    System.out.println("Total Money: " + totalMoney); // Debugging
+                                    int newQuan = cd.getQuantity();
+                                    newQuan = (cd.getQuantity() - 1);
+                                    cd.setQuantity(newQuan);
+                                    System.out.println("After update - Quantity: " + cd.getQuantity()); // Debugging
+                                    break;
+                                }
+                            }
+                            break;
+
+                        case 3: // DVD
+                            for (DVD dvd : inventory.DVDs) {
+                                if (dvd.getNumber() == orderBook) {
+                                    inventory.setNumItems(inventory.getNumItems() + 1);
+                                    System.out.println("Before update - Quantity: " + dvd.getQuantity()); // Debugging
+                                    totalMoney = totalMoney + dvd.getPrice();
+                                    System.out.println("Total Money: " + totalMoney); // Debugging
+                                    int newQuan = dvd.getQuantity();
+                                    newQuan = (dvd.getQuantity() - 1);
+                                    dvd.setQuantity(newQuan);
+                                    System.out.println("After update - Quantity: " + dvd.getQuantity()); // Debugging
+                                    break;
+                                }
+                            }
+                            break;
+
+                        default:
+                            System.out.println("Invalid order number.");
+                            break;
+                    }
+                    
+                    System.out.println("You have " + inventory.getNumItems() + " Items in your cart. Are you done shopping?");
+                    System.out.println("1. Yes");
+                    System.out.println("2. No");
+                    int doneShopping = scan.nextInt();
+                    if(doneShopping == 1){
+                        System.out.println("Please select which member is making this purchase");
+                        System.out.println("1. James");
+                        System.out.println("2. Ryan");
+                        System.out.println("3. register a new member");
+                        int memberPurchase = scan.nextInt();
+                        System.out.println("Lets get you registed as a new member");
+                        System.out.println("Would you like to register as a regular member or Premium Member");
+                        System.out.println("1. Regular Member ");
+                        System.out.println("2. Premium Member ");
+                        int regPrem = scan.nextInt();
+                        if(regPrem == 1){
+                            System.out.println("Please enter your name");
+                            scan.nextLine();
+                            String name = scan.nextLine();
+                            System.out.println("Your total comes out to be " + totalMoney + " Dollars " + name);  
+                            System.out.println("Thank you for shopping with us, have a nice day");
+                            System.exit(0);
+                        }
+                        if(regPrem == 2){
+                          System.out.println("Please enter your name");
+                            String name = scan.nextLine(); // Read the name
+
+                            System.out.println("Please enter your prefered method of payment");
+                            System.out.println("1. Debit");
+                            System.out.println("2. Credit");
+                            int payment = scan.nextInt(); // Read the payment choice
+
+                            if (payment == 1) {
+                                System.out.println("You will be billed $10 in 30 days for your subscription with us through your debit card.");
+                            } else {
+                                System.out.println("You will be billed $10 in 30 days for your subscription with us through your credit card.");
+                            }
+
+                            System.out.println("Your total comes out to be " + totalMoney + " Dollars " + name);  
+                            System.out.println("Thank you for shopping with us, have a nice day");
+                            System.exit(0);
+                            
+                        }
     
+                    }
+                    if(doneShopping == 2){
+                        break;
+                    }
+
+                case 2:
+                    break;
+                case 3:
+                    System.out.println("Here's what we have in store today! NEW RESTOCKS EVERY MONDAY");
+                    System.out.println("***************************************************");
+                    for (Book book : inventory.books) {
+                        System.out.println(book.getNumber() + ". " + book.getTitle() + ": " + book.getQuantity() + " in stock" + " -- " + "$" + book.getPrice() + book.getType());
+                    }
+
+                    for (CD cd : inventory.CDs) {
+                        System.out.println(cd.getNumber() + ". " + cd.getTitle() + ": " + cd.getQuantity() + " in stock" + " -- " + "$" + cd.getPrice() + cd.getType());
+                    }
+
+                    for (DVD dvd : inventory.DVDs) {
+                        System.out.println(dvd.getNumber() + ". " + dvd.getTitle() + ": " + dvd.getQuantity() + " in stock" + " -- " + dvd.getPrice() + dvd.getType());
+                    }
+                    System.out.println("***************************************************");
+                    break;
+                case 4:
+                    System.out.println("Thank you for shopping with us, have a nice day");
+                    System.exit(0);
+
+            }
+
+        }
+
+    }
+
 }
+
