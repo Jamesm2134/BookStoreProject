@@ -10,10 +10,26 @@ package mckennajamesproject1;
  */
 public class CD {
     private String title;
+    private int number;
     private int quantity;
-    private int wholeLottaRed;
-    private int smithereens;
-    private int aloneATProm;
+    private double price;
+    private String type;
+    
+    public int getNumber(){
+        return number;
+    }
+    public void setNumber(int number){
+        this.number = number;
+    }
+    
+    public String getType() {
+        return type;
+    }
+
+    // Setter for type
+    public void setType(String type) {
+        this.type = type;
+    }
     
     public String getTitle() {
         return title;
@@ -34,38 +50,24 @@ public class CD {
         this.quantity = quantity;
     }
 
-    // Getter for wholeLottaRed
-    public int getWholeLottaRed() {
-        return wholeLottaRed;
+    
+    
+    // Getter for price
+    public double getPrice() {
+        return price;
     }
 
-    // Setter for wholeLottaRed
-    public void setWholeLottaRed(int wholeLottaRed) {
-        this.wholeLottaRed = wholeLottaRed;
+    // Setter for price
+    public void setPrice(double price) {
+        this.price = price;
     }
-
-    // Getter for smithereens
-    public int getSmithereens() {
-        return smithereens;
-    }
-
-    // Setter for smithereens
-    public void setSmithereens(int smithereens) {
-        this.smithereens = smithereens;
-    }
-
-    // Getter for aloneATProm
-    public int getAloneATProm() {
-        return aloneATProm;
-    }
-
-    // Setter for aloneATProm
-    public void setAloneATProm(int aloneATProm) {
-        this.aloneATProm = aloneATProm;
-    }
-    public CD(String title, int quantity) {
+    
+    public CD(int number, String title, int quantity,double price, String type) {
+        this.number = number;
         this.title = title;
         this.quantity = quantity;
+        this.price = price;
+        this.type = type;
     }
 
     
