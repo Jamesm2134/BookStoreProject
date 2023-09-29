@@ -8,6 +8,14 @@ package mckennajamesproject1;
  *
  * @author jamck
  */
+
+////////////////////////////////////////////////////////////////////////
+/*
+
+cd class creates the cd atributes for the inventory class to popualte.
+
+*/
+////////////////////////////////////////////////////////////////////////
 public class CD {
     private String title;
     private int number;
@@ -15,6 +23,7 @@ public class CD {
     private double price;
     private String type;
     
+    // getters and setters
     public int getNumber(){
         return number;
     }
@@ -25,8 +34,6 @@ public class CD {
     public String getType() {
         return type;
     }
-
-    // Setter for type
     public void setType(String type) {
         this.type = type;
     }
@@ -34,34 +41,23 @@ public class CD {
     public String getTitle() {
         return title;
     }
-
-    // Setter for title
     public void setTitle(String title) {
         this.title = title;
     }
-
-    // Getter for quantity
     public int getQuantity() {
         return quantity;
     }
-
-    // Setter for quantity
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    
-    
-    // Getter for price
     public double getPrice() {
         return price;
     }
-
-    // Setter for price
     public void setPrice(double price) {
         this.price = price;
     }
     
+    // cd constructor
     public CD(int number, String title, int quantity,double price, String type) {
         this.number = number;
         this.title = title;
