@@ -11,43 +11,28 @@ package mckennajamesproject1;
 
 import java.util.*;
 public class Book {
+    private int number;
     private String title;
     private int quantity;
     private String type;
-    private int theAlchemist;
-    private int silentPatient;
-    private int mazeRunner;
+    private double price;
+   
+    private boolean outOfStock;
     
-    // Getter for theAlchemist
-    public int getTheAlchemist() {
-        return theAlchemist;
+    public boolean isOutOfStock() {
+        return outOfStock;
     }
 
-    // Setter for theAlchemist
-    public void setTheAlchemist(int theAlchemist) {
-        this.theAlchemist = theAlchemist;
+    public void setOutOfStock(boolean outOfStock) {
+        this.outOfStock = outOfStock;
     }
-
-    // Getter for silentPatient
-    public int getSilentPatient() {
-        return silentPatient;
+    public int getNumber(){
+        return number;
     }
-
-    // Setter for silentPatient
-    public void setSilentPatient(int silentPatient) {
-        this.silentPatient = silentPatient;
+    public void setNumber(int number){
+        this.number = number;
     }
-
-    // Getter for mazeRunner
-    public int getMazeRunner() {
-        return mazeRunner;
-    }
-
-    // Setter for mazeRunner
-    public void setMazeRunner(int mazeRunner) {
-        this.mazeRunner = mazeRunner;
-    }
-
+    
     // Getter and Setter for title
     public String getTitle() {
         return title;
@@ -73,10 +58,21 @@ public class Book {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    // Getter for price
+    public double getPrice() {
+        return price;
+    }
+
+    // Setter for price
+    public void setPrice(double price) {
+        this.price = price;
+    }
     
-    public Book(String title, int quantity, String type) {
+    public Book(int number, String title, int quantity,double price, String type) {
+        this.number = number;
         this.title = title;
         this.quantity = quantity;
+        this.price = price;
         this.type = type;
     }
     
