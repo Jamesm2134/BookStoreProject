@@ -8,6 +8,46 @@ package mckennajamesproject1;
  *
  * @author jamck
  */
+import java.util.*;
+
 public class Membership {
+    private ArrayList<String> names = new ArrayList<>();
+    private String paymentMethod;
+    private boolean premiumMember;
+    
+    public Membership() {
+        this.names = names;
+        this.paymentMethod = paymentMethod;
+        this.premiumMember = premiumMember;
+    }
+    
+    public ArrayList<String> getNames() {
+        return names;
+    }
+
+    public void setNames(ArrayList<String> names) {
+        this.names = names;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public boolean isPremiumMember() {
+        return premiumMember;
+    }
+
+    public void setPremiumMember(boolean premiumMember) {
+        this.premiumMember = premiumMember;
+    }
+    
+    public void addNames(ArrayList<String> newNames) {
+        this.names.addAll(newNames);
+    }
+
     
 }
