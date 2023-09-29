@@ -21,6 +21,7 @@ public class BookStore {
         //import scanner
         Scanner scan = new Scanner(System.in);
         boolean leaveStore = false;
+        boolean bookZero = false;
         double totalMoney = 0.0;
         //while took to keep the program running while the user is in the store
         while (leaveStore == false) {
@@ -74,41 +75,53 @@ public class BookStore {
                     } else if (orderBook >= 7 && orderBook <= 8) {
                         selectedBookType = 3; // DVD type
                     }
-
+                    
                     switch (selectedBookType) {
                         case 1: // Book
+                            boolean bookPurchased = false;
+
                             for (Book book : inventory.books) {
-                                if (book.getNumber() == orderBook && book.getQuantity() > 0){
+                                if (book.getNumber() == orderBook && book.getQuantity() > 0) {
                                     System.out.println(book.getQuantity() + " helllooo");
                                     inventory.setNumItems(inventory.getNumItems() + 1);
-                                    System.out.println("Before update - Quantity: " + book.getQuantity()); // Debugging
+                                    System.out.println("Before update - Quantity: " + book.getQuantity());
                                     totalMoney = totalMoney + book.getPrice();
-                                    System.out.println("Total Money: " + totalMoney); // Debugging
-                                    int newQuan = book.getQuantity();
-                                    newQuan = (book.getQuantity() - 1);
+                                    System.out.println("Total Money: " + totalMoney);
+                                    int newQuan = book.getQuantity() - 1;
                                     book.setQuantity(newQuan);
-                                    System.out.println("After update - Quantity: " + book.getQuantity()); // Debugging
+                                    System.out.println("After update - Quantity: " + book.getQuantity());
+                                    bookPurchased = true;
                                     break;
-                                }else{
-                                    System.out.println("OUT OF STOCK");
                                 }
+                            }
+
+                            if (!bookPurchased) {
+                                System.out.println("OUT OF STOCK");
                             }
                             break;
 
                         case 2: // CD
-                            for (CD cd : inventory.CDs) {
-                                if (cd.getNumber() == orderBook) {
-                                    inventory.setNumItems(inventory.getNumItems() + 1);
-                                    System.out.println("Before update - Quantity: " + cd.getQuantity()); // Debugging
-                                    totalMoney = totalMoney + cd.getPrice();
-                                    System.out.println("Total Money: " + totalMoney); // Debugging
-                                    int newQuan = cd.getQuantity();
-                                    newQuan = (cd.getQuantity() - 1);
-                                    cd.setQuantity(newQuan);
-                                    System.out.println("After update - Quantity: " + cd.getQuantity()); // Debugging
-                                    break;
+                            
+                            if (bookZero == false) {
+
+                                for (CD cd : inventory.CDs) {
+                                    if (cd.getNumber() == orderBook && bookZero == false) {
+                                        inventory.setNumItems(inventory.getNumItems() + 1);
+                                        totalMoney = totalMoney + cd.getPrice();
+                                        int newQuan = cd.getQuantity();
+                                        newQuan = (cd.getQuantity() - 1);
+                                        cd.setQuantity(newQuan);
+                                        if (newQuan == 0) {
+                                            bookZero = true;
+                                        }
+                                        break;
+                                    } else {
+                                        System.out.println("Out of Stock!");
+                                    }
                                 }
+
                             }
+
                             break;
 
                         case 3: // DVD
@@ -131,12 +144,12 @@ public class BookStore {
                             System.out.println("Invalid order number.");
                             break;
                     }
-                    
+
                     System.out.println("You have " + inventory.getNumItems() + " Items in your cart. Are you done shopping?");
                     System.out.println("1. Yes");
                     System.out.println("2. No");
                     int doneShopping = scan.nextInt();
-                    if(doneShopping == 1){
+                    if (doneShopping == 1) {
                         System.out.println("Please select which member is making this purchase");
                         System.out.println("1. James");
                         System.out.println("2. Ryan");
@@ -147,16 +160,16 @@ public class BookStore {
                         System.out.println("1. Regular Member ");
                         System.out.println("2. Premium Member ");
                         int regPrem = scan.nextInt();
-                        if(regPrem == 1){
+                        if (regPrem == 1) {
                             System.out.println("Please enter your name");
                             scan.nextLine();
                             String name = scan.nextLine();
-                            System.out.println("Your total comes out to be " + totalMoney + " Dollars " + name);  
+                            System.out.println("Your total comes out to be " + totalMoney + " Dollars " + name);
                             System.out.println("Thank you for shopping with us, have a nice day");
                             System.exit(0);
                         }
-                        if(regPrem == 2){
-                          System.out.println("Please enter your name");
+                        if (regPrem == 2) {
+                            System.out.println("Please enter your name");
                             String name = scan.nextLine(); // Read the name
 
                             System.out.println("Please enter your prefered method of payment");
@@ -170,14 +183,14 @@ public class BookStore {
                                 System.out.println("You will be billed $10 in 30 days for your subscription with us through your credit card.");
                             }
 
-                            System.out.println("Your total comes out to be " + totalMoney + " Dollars " + name);  
+                            System.out.println("Your total comes out to be " + totalMoney + " Dollars " + name);
                             System.out.println("Thank you for shopping with us, have a nice day");
                             System.exit(0);
-                            
+
                         }
-    
+
                     }
-                    if(doneShopping == 2){
+                    if (doneShopping == 2) {
                         break;
                     }
 
@@ -210,4 +223,3 @@ public class BookStore {
     }
 
 }
-
