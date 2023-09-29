@@ -8,6 +8,15 @@ package mckennajamesproject1;
  *
  * @author jamck
  */
+
+////////////////////////////////////////////////////////////////////////
+/*
+
+In the same way as the cd class, the dvdclass creates the cd atributes 
+for the inventory class to popualte.
+
+*/
+////////////////////////////////////////////////////////////////////////
 public class DVD {
     private String title;
     private int number;
@@ -15,6 +24,8 @@ public class DVD {
     private double price;
     private String type;
     
+    
+    // getters and setters
     public int getNumber(){
         return number;
     }
@@ -62,7 +73,7 @@ public class DVD {
         this.price = price;
     }
 
-    
+    // DVD constructor
     public DVD(int number, String title, int quantity,double price, String type) {
         this.number = number;
         this.title = title;
