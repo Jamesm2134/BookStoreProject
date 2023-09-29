@@ -10,10 +10,26 @@ package mckennajamesproject1;
  */
 public class DVD {
     private String title;
+    private int number;
     private int quantity;
-    private int onePiece250;
-    private int onePiece500;
-    private int onePiece750;
+    private double price;
+    private String type;
+    
+    public int getNumber(){
+        return number;
+    }
+    public void setNumber(int number){
+        this.number = number;
+    }
+    
+    public String getType() {
+        return type;
+    }
+
+    // Setter for type
+    public void setType(String type) {
+        this.type = type;
+    }
     
      // Getter for title
     public String getTitle() {
@@ -35,39 +51,24 @@ public class DVD {
         this.quantity = quantity;
     }
 
-    // Getter for onePiece250
-    public int getOnePiece250() {
-        return onePiece250;
-    }
-
-    // Setter for onePiece250
-    public void setOnePiece250(int onePiece250) {
-        this.onePiece250 = onePiece250;
-    }
-
-    // Getter for onePiece500
-    public int getOnePiece500() {
-        return onePiece500;
-    }
-
-    // Setter for onePiece500
-    public void setOnePiece500(int onePiece500) {
-        this.onePiece500 = onePiece500;
-    }
-
-    // Getter for onePiece750
-    public int getOnePiece750() {
-        return onePiece750;
-    }
-
-    // Setter for onePiece750
-    public void setOnePiece750(int onePiece750) {
-        this.onePiece750 = onePiece750;
-    }
     
-    public DVD(String title, int quantity) {
+    // Getter for price
+    public double getPrice() {
+        return price;
+    }
+
+    // Setter for price
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    
+    public DVD(int number, String title, int quantity,double price, String type) {
+        this.number = number;
         this.title = title;
         this.quantity = quantity;
+        this.price = price;
+        this.type = type;
     }
     
 }
