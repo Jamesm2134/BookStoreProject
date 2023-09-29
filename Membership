@@ -8,46 +8,61 @@ package mckennajamesproject1;
  *
  * @author jamck
  */
+
+////////////////////////////////////////////////////////////////////////
+/*
+The membership class just like cd,dvd and dvd creates the membership object
+for it to be populated with information in the inventory class. This class
+is important for keeping track of members.
+
+
+*/
+////////////////////////////////////////////////////////////////////////
 import java.util.*;
 
 public class Membership {
-    private ArrayList<String> names = new ArrayList<>();
+    private String name;
     private String paymentMethod;
-    private boolean premiumMember;
+    private boolean premium;
+    private double totalMoneySpent;
+    private String paymentDue;
     
-    public Membership() {
-        this.names = names;
+    // creates the membership constructor that is caleld in other classes
+    public Membership(String name, String paymentMethod, boolean premium, double totalMoneySpent, String paymentDue) {
+        this.name = name;
         this.paymentMethod = paymentMethod;
-        this.premiumMember = premiumMember;
+        this.premium = premium;
+        this.totalMoneySpent = totalMoneySpent;
+        this.paymentDue = paymentDue;
     }
     
-    public ArrayList<String> getNames() {
-        return names;
+    // getters and setters
+    public String getName() {
+        return name;
     }
-
-    public void setNames(ArrayList<String> names) {
-        this.names = names;
+    
+    public String getPaymentDue() {
+        return paymentDue;
     }
 
     public String getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public boolean isPremium() {
+        return premium;
     }
 
-    public boolean isPremiumMember() {
-        return premiumMember;
+    public double getTotalMoneySpent() {
+        return totalMoneySpent;
     }
 
-    public void setPremiumMember(boolean premiumMember) {
-        this.premiumMember = premiumMember;
-    }
-    
-    public void addNames(ArrayList<String> newNames) {
-        this.names.addAll(newNames);
+    public void addToTotalMoneySpent(double amount) {
+        totalMoneySpent += amount;
     }
 
-    
+    public void setTotalMoneySpent(double totalMoneySpent) {
+        this.totalMoneySpent = totalMoneySpent;
+    }
 }
+
